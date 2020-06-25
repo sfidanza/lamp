@@ -1,0 +1,19 @@
+version: '2'
+services:
+  php:
+    build: ./docker/php
+    volumes:
+      - ./code/:/var/www/html
+      - ./log/:/var/log/apache2/
+    ports:
+      - "8000:80"
+    depends_on:
+       - db
+
+  db:
+    build: ./docker/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8081:80
