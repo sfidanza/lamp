@@ -1,19 +1,33 @@
-version: '2'
+version: '3.7'
 services:
   php:
     build: ./docker/php
     volumes:
-      - ./code/:/var/www/html
-      - ./log/:/var/log/apache2/
+      - ../php-code/dagobah:/var/www/dagobah
+      - ../php-code/naiad/src:/var/www/naiad
+      - ../php-code/euro/euro2008/src:/var/www/euro2008
+      - ../php-code/euro/euro2012/src:/var/www/euro2012
+      - ../php-code/euro/worldcup2010/src:/var/www/worldcup2010
+      - ../php-code/heroes/dev:/var/www/heroes
+      - ../php-code/heroes/modding_wiki:/var/www/modding_wiki
+      - ../php-code/tools:/var/www/tools
+      - ../../localhost/logs:/var/log/apache2
     ports:
       - "8000:80"
     depends_on:
-       - db
+      - mysql
 
-  db:
+  mysql:
     build: ./docker/mysql
+    volumes:
+      - db-data:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
+    links:
+      - mysql:db
     ports:
-      - 8081:80
+      - "8081:80"
+
+volumes:
+  db-data:
