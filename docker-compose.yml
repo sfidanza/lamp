@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   php:
-    build: ./docker/php
+    build: ./php
     volumes:
       - ../php-code/dagobah:/var/www/dagobah
       - ../php-code/naiad/src:/var/www/naiad
@@ -12,15 +12,19 @@ services:
       - ../php-code/heroes/modding_wiki:/var/www/modding_wiki
       - ../php-code/tools:/var/www/tools
       - ../../localhost/logs:/var/log/apache2
+    environment:
+      - MYSQL_ROOT_PASSWORD=test
     ports:
       - "8000:80"
     depends_on:
       - mysql
 
   mysql:
-    build: ./docker/mysql
+    build: ./mysql
     volumes:
       - db-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=test
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
