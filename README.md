@@ -36,7 +36,7 @@ Do it with `docker-desktop-data` as well, as it can take even more space.
 
 Installation:
 
-    sudo apt-get install docker docker-compose
+    sudo apt-get install docker
 
 You can check docker service status with
 
@@ -49,9 +49,9 @@ To issue more docker commands, you can either make sure $USER belongs to `docker
     sudo usermod -aG docker ${USER}
     su - ${USER}
 
-Reference:
+To install compose, you can take it from apt-get as well, but the version will be most likely outdated. Instead, install it via curl as indicated on the official compose install page:
 
-- <https://www.bountysource.com/issues/39603144-error-couldn-t-connect-to-docker-daemon-at-http-docker-localunixsocket-is-it-running>
+- <https://docs.docker.com/compose/install/>
 
 Once you get everything setup, it is simple to start/stop the LAMP stack:
 
@@ -80,3 +80,19 @@ docker-compose documentation is also a good reference: <https://docs.docker.com/
 ### ssh keys setup
 
 - <https://stackoverflow.com/questions/6377009/adding-a-public-key-to-ssh-authorized-keys-does-not-log-me-in-automatically/24724558#24724558>
+
+### Running the containers
+
+On the production box, create a .env file with the production credentials (you can use the .env.sample as base). Then, you can run the following `docker-compose` commands to start/stop the containers:
+
+    docker-compose -f "docker-compose.PRD.yml" up -d --build
+    docker-compose -f "docker-compose.PRD.yml" down
+
+### Running multiple containers in parallel
+
+Note that to share port 80 between multiple such containers (or other non-containerized services), you have to setup a reverse-proxy (I use nginx for this) to map each domain to the port served by its container. This container is using port 8080, and the nginx server block to be added to the host nginx can be found in `/proxy/lamp`. To use it (at least on my Ubuntu 18.04 setup):
+
+    cp proxy/lamp /etc/nginx/sites-available
+    ln -s /etc/nginx/sites-available/lamp /etc/nginx/sites-enabled
+    nginx -t                    # check nginx config syntax is correct
+    systemctl restart nginx     # restart nginx

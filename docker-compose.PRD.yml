@@ -4,20 +4,16 @@ services:
     build: ./php
     volumes:
       - ../php-code/dagobah:/var/www/dagobah
-      # - ../php-code/naiad/src:/var/www/naiad
       - ../php-code/euro/euro2008/src:/var/www/euro2008
       - ../php-code/euro/euro2012/src:/var/www/euro2012
       - ../php-code/euro/worldcup2010/src:/var/www/worldcup2010
-      # - ../php-code/heroes/dev:/var/www/heroes
-      # - ../php-code/heroes/modding_wiki:/var/www/modding_wiki
-      # - ../php-code/tools:/var/www/tools
-      - ../../localhost/logs:/var/log/apache2
     environment:
       - MYSQL_HOST=mysql
       - MYSQL_USER=root
       - MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD}
     ports:
-      - "8000:80"
+      - "8080:80"
+    restart: always
     depends_on:
       - mysql
 
@@ -27,13 +23,7 @@ services:
       - db-data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    links:
-      - mysql:db
-    ports:
-      - "8081:80"
+    restart: always
 
 volumes:
   db-data:

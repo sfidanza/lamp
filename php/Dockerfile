@@ -6,7 +6,8 @@ RUN docker-php-ext-install mysql mysqli
 RUN a2enmod rewrite
 
 COPY apache2-conf/sites-available/*.conf /etc/apache2/sites-available/
-RUN a2ensite dagobah \
+RUN a2ensite \
+        dagobah \
         # naiad \
         euro2008 \
         euro2012 \
