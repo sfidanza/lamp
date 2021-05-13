@@ -1,0 +1,25 @@
+version: '3'
+services:
+  php:
+    volumes:
+      # - ../php-code/naiad/src:/var/www/naiad
+      # - ../php-code/heroes/dev:/var/www/heroes
+      # - ../php-code/heroes/modding_wiki:/var/www/modding_wiki
+      # - ../php-code/tools:/var/www/tools
+      # - ../../localhost/logs:/var/log/apache2
+    restart: no
+
+  db:
+    restart: no
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - db
+    ports:
+      - "8081:80"
+
+# networks:
+#   default:
+#     external:
+#       name: gateway_default
