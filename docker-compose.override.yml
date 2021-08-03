@@ -1,16 +1,18 @@
 version: '3'
 services:
   php:
+    build: ./php
     volumes:
       # - ../php-code/naiad/src:/var/www/naiad
       # - ../php-code/heroes/dev:/var/www/heroes
       # - ../php-code/heroes/modding_wiki:/var/www/modding_wiki
       # - ../php-code/tools:/var/www/tools
       # - ../../localhost/logs:/var/log/apache2
-    restart: no
+    restart: "no"
 
   db:
-    restart: no
+    build: ./mysql
+    restart: "no"
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin

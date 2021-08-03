@@ -1,7 +1,7 @@
 version: '3'
 services:
   php:
-    build: ./php
+    image: sfidanza/lamp-backend
     volumes:
       - ../php-code/dagobah:/var/www/dagobah
       - ../php-code/euro/euro2008/src:/var/www/euro2008
@@ -18,7 +18,7 @@ services:
       - db
 
   db:
-    build: ./mysql
+    image: sfidanza/lamp-db
     volumes:
       - db-data:/var/lib/mysql
     environment:
