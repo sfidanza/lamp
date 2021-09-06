@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   php:
     image: sfidanza/lamp-backend
@@ -14,8 +14,8 @@ services:
     ports:
       - "8080:80"
     restart: always
-    depends_on:
-      - db
+    # depends_on: # not supported by docker stack and not resilient anyway (if a dependency crashes)
+      # - db
 
   db:
     image: sfidanza/lamp-db

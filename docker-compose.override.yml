@@ -1,13 +1,13 @@
-version: '3'
+version: '3.8'
 services:
   php:
     build: ./php
-    volumes:
-      # - ../php-code/naiad/src:/var/www/naiad
-      # - ../php-code/heroes/dev:/var/www/heroes
-      # - ../php-code/heroes/modding_wiki:/var/www/modding_wiki
-      # - ../php-code/tools:/var/www/tools
-      # - ../../localhost/logs:/var/log/apache2
+    # volumes:
+    #   - ../php-code/naiad/src:/var/www/naiad
+    #   - ../php-code/heroes/dev:/var/www/heroes
+    #   - ../php-code/heroes/modding_wiki:/var/www/modding_wiki
+    #   - ../php-code/tools:/var/www/tools
+    #   - ../../localhost/logs:/var/log/apache2
     restart: "no"
 
   db:
