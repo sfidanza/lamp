@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   php:
-    image: sfidanza/lamp-backend
+    image: ghcr.io/sfidanza/lamp-backend
     volumes:
       - ../php-code/dagobah:/var/www/dagobah
       - ../php-code/euro/euro2008/src:/var/www/euro2008
@@ -13,17 +13,13 @@ services:
       - MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD}
     ports:
       - "8080:80"
-    restart: always
-    # depends_on: # not supported by docker stack and not resilient anyway (if a dependency crashes)
-      # - db
 
   db:
-    image: sfidanza/lamp-db
+    image: ghcr.io/sfidanza/lamp-db
     volumes:
       - db-data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD
-    restart: always
 
 volumes:
   db-data:

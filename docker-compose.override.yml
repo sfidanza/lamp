@@ -8,11 +8,9 @@ services:
     #   - ../php-code/heroes/modding_wiki:/var/www/modding_wiki
     #   - ../php-code/tools:/var/www/tools
     #   - ../../localhost/logs:/var/log/apache2
-    restart: "no"
 
   db:
     build: ./mysql
-    restart: "no"
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
