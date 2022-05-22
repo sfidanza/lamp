@@ -4,7 +4,7 @@ services:
     deploy:
       labels:
         - traefik.enable=true
-        - traefik.http.routers.lamp.rule=Host(`dagobah-online.com`, `euro2008.dagobah-online.com`, `euro2012.dagobah-online.com`, `worldcup2010.dagobah-online.com`)
+        - traefik.http.routers.lamp.rule=Host(`dagobah-online.com`, `www.dagobah-online.com`, `euro2008.dagobah-online.com`, `euro2012.dagobah-online.com`, `worldcup2010.dagobah-online.com`)
         - traefik.http.services.lamp.loadbalancer.server.port=80
         # Activate https
         - traefik.http.routers.lamp.tls=true
