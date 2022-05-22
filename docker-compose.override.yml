@@ -2,6 +2,8 @@ version: '3.8'
 services:
   php:
     build: ./php
+    ports:
+      - "8080:80"
     # volumes:
     #   - ../php-code/naiad/src:/var/www/naiad
     #   - ../php-code/heroes/dev:/var/www/heroes
@@ -18,8 +20,3 @@ services:
       - db
     ports:
       - "8081:80"
-
-# networks:
-#   default:
-#     external:
-#       name: gateway_default
