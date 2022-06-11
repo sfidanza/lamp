@@ -24,7 +24,7 @@ You need a `.env` file in the root folder to specify the secrets. You can simply
 
 ### Run locally in production mode
 
-Here are the commands to start/stop everything (with the containers built locally):
+Here are the commands to start/stop everything using `docker-compose` (with the containers built locally):
 
     docker-compose -f "docker-compose.yml" up -d --build
     docker-compose -f "docker-compose.yml" down
@@ -43,7 +43,7 @@ Once containers are started, you can access:
 
 ## Production box
 
-On the production box, create a .env file with the production credentials (you can use the .env.sample as base). Then, you can run the following `docker-compose` commands to start/stop the containers:
+First, adapt your `.env` file with the production credentials. The, for real production use, containers should be deployed on Docker Swarm. Images will be sourced from container hub or will have to be built locally before (through `docker-compose build` for example). To enable routing from the Traefik gateway, the corresponding `compose` file should be used as well:
 
-    docker-compose -f "docker-compose.yml" up -d --build
-    docker-compose -f "docker-compose.yml" down
+    docker-compose -f docker-compose.yml -f docker-compose.traefik.yml config | docker stack deploy -c - lamp
+    docker stack rm lamp
