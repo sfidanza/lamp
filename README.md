@@ -12,7 +12,7 @@ The target is to plug this stack to external bind mounts to run multiple virtual
 - heroes.dagobah-online.com
 - euro2008, worldcup2010, euro2012
 
-We will use Docker to run all this (you can follow the install guide inside [Install-Docker.md](Install-Docker.md)). The base images used here support different options that can be found there for reference:
+We will use Docker to run all this. The base images used here support different options that can be found there for reference:
 
 - PHP: <https://hub.docker.com/_/php>
 - MySQL: <https://hub.docker.com/_/mysql>
