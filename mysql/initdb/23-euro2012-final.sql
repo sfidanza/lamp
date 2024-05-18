@@ -134,7 +134,7 @@ INSERT INTO `euro2012_teams` VALUES
 ('POL','Poland','A',3,0,2,1,2,2,3,-1,4),
 ('GRE','Greece','A',3,1,1,1,4,3,3,0,2),
 ('RUS','Russia','A',3,1,1,1,4,5,3,2,3),
-('CZE','Czech Republic','A',3,2,0,1,6,4,5,-1,1),
+('CZE','Czechia','A',3,2,0,1,6,4,5,-1,1),
 ('NED','Netherlands','B',3,0,0,3,0,2,5,-3,4),
 ('DEN','Denmark','B',3,1,0,2,3,4,5,-1,3),
 ('GER','Germany','B',3,3,0,0,9,5,2,3,1),
