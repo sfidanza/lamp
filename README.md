@@ -8,7 +8,7 @@ Let's deploy a LAMP stack inside docker containers:
 
 The target is to plug this stack to external bind mounts to run multiple virtual hosts:
 
-- www.dagobah-online.com
+- <www.dagobah-online.com>
 - heroes.dagobah-online.com
 - euro2008, worldcup2010, euro2012
 
@@ -24,17 +24,17 @@ You need a `.env` file in the root folder to specify the secrets. You can simply
 
 ### Run locally in production mode
 
-Here are the commands to start/stop everything using `docker-compose` (with the containers built locally):
+Here are the commands to start/stop everything using `docker compose` (with the containers built locally):
 
-    docker-compose -f "docker-compose.yml" up -d --build
-    docker-compose -f "docker-compose.yml" down
+    docker compose -f "docker-compose.yml" up -d --build
+    docker compose -f "docker-compose.yml" down
 
 ### Run locally in development mode
 
-Running `docker-compose up` without specifying the file will automatically take the `docker-compose.override.yml` into account. The commands are thus even simpler:
+Running `docker compose up` without specifying the file will automatically take the `docker-compose.override.yml` into account. The commands are thus even simpler:
 
-    docker-compose up -d --build
-    docker-compose down
+    docker compose up -d --build
+    docker compose down
 
 Once containers are started, you can access:
 
@@ -43,7 +43,7 @@ Once containers are started, you can access:
 
 ## Production box
 
-First, adapt your `.env` file with the production credentials. The, for real production use, containers should be deployed on Docker Swarm. Images will be sourced from container hub or will have to be built locally before (through `docker-compose build` for example). To enable routing from the Traefik gateway, the corresponding `compose` file should be used as well:
+First, adapt your `.env` file with the production credentials. The, for real production use, containers should be deployed on Docker Swarm. Images will be sourced from container hub or will have to be built locally before (through `docker compose build` for example). To enable routing from the Traefik gateway, the corresponding `compose` file should be used as well:
 
-    docker-compose -f docker-compose.yml -f docker-compose.traefik.yml config | docker stack deploy -c - lamp
+    docker compose -f docker-compose.yml -f docker-compose.traefik.yml config | docker stack deploy -c - lamp
     docker stack rm lamp
