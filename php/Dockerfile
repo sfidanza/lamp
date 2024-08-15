@@ -1,6 +1,6 @@
-FROM php:5.6-apache
+FROM php:7-apache
 
-RUN docker-php-ext-install mysql mysqli
+RUN docker-php-ext-install mysqli
 # To be run if zip support is needed in php
 #RUN set -eux; apt-get update; apt-get install -y libzip-dev zlib1g-dev; docker-php-ext-install zip
 RUN a2enmod rewrite
