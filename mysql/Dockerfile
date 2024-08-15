@@ -1,4 +1,4 @@
-FROM mysql:8.4
+FROM mysql:9.0
 
 # These scripts create the databases and populate them at volume creation
 # They are not run by Docker if mysql data is already set in the volume
